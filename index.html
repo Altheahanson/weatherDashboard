@@ -7,6 +7,8 @@
     <title>Weather DashBoard</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="./assets/CSS/styles.css">
 </head>
 <body>
     <header class="container-fluid text-center text-white bg-dark p-2">
@@ -14,32 +16,32 @@
     </header>
 
     <div class="row">
-    <aside class="col-sm-3 sideNav">
+    <aside class="column col-3 sideNav">
+        <form>
+          <label class="text-dark m-2  ">Search for a your City here:</label>
+          <input class="form-control m-2 text-dark" type="search" placeholder="Search" id="city-input">
+          <button class="btn btn-outline-dark m-2" style="width: 100%" type="submit" id="search-button">Enter City</button>
+        </form>
 
-        <div id="searchBox" class="col">
-          <form>
-            <input id="addCity" type="text" class="form-control" placeholder="Enter City Here">
-            <button id="searchBtn" class="btn">Search City</button>
-          </form>
+        <button class="btn btn-outline-dark m-2" style="width: 100%" type="submit" id="clear-button">Clear History</button>
+      
+        <div class="border-top border-dark" id="past-searches">
+          <!-- Past city searches will go here  -->
         </div>
-    
-        <!-- citySearchList -->
-        <div id="cityList"></div>  
       </aside>
 
-      <section class="col-sm-9 container">
-     
-        <div id="today" class="row"></div>
-          <div class="col">         
-            <h2>5-Day Forecast</h2>
-          </div>
-
-          <div id="deck" class="row">
-            <div class="col card-deck"></div>
-          </div>
-
-        </section>  
+      <section class="column col-9">
+        <div class="row" id="currentConditions"></div>
+        <!-- Current city current weather conditions will go here  -->
+        
+        <div class="row" id="fiveDayForecastHeader"></div>
+        <div class="d-flex flex-row flex-wrap justify-content-between" id="fiveDayForecast"></div>
+        <!-- Current city 5 day forecast will go here  -->
+      </section> 
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./assets/JS/index.js"></script>
 </body>
 </html>
