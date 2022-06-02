@@ -20,7 +20,7 @@ function getWeather(data) {
 
             //==========current weather=======================//
             var currentConditions = $('#currentConditions');
-            currentConditions.addClass('border border-dark');
+            currentConditions.addClass('border border-dark bg-secondary');
 
             //=============create city name element and display================//
             var cityName = $('<h2>');
@@ -79,6 +79,44 @@ function getWeather(data) {
             }
 
             currentConditions.append(currentUvEl);
+
+
+	            //=========5 - Day Forecast	 for selected area==============//
+            // create 5 Day Forecast <h2> header	
+            var fiveDayForecastHeaderEl = $('#fiveDayForecastHeader');	
+            var fiveDayHeaderEl = $('<h2>');	
+            fiveDayHeaderEl.text('5-Day Forecast:');	
+            fiveDayForecastHeaderEl.append(fiveDayHeaderEl);	
+            var fiveDayForecastEl = $('#fiveDayForecast');	
+            // get key weather info from API data for five day forecast and display	
+            for (var i = 1; i <=5; i++) {	
+                var date;	
+                var temp;	
+                var icon;	
+                var wind;	
+                var humidity;	
+                date = data.daily[i].dt;	
+                date = moment.unix(date).format("MM/DD/YYYY");	
+                temp = data.daily[i].temp.day;	
+                icon = data.daily[i].weather[0].icon;	
+                wind = data.daily[i].wind_speed;	
+                humidity = data.daily[i].humidity;	
+                // create a card	
+                var card = document.createElement('div');	
+                card.classList.add('card', 'col-2', 'm-1', 'bg-secondary', 'text-white');	
+                	
+                // create card body and append	
+                var cardBody = document.createElement('div');	
+                cardBody.classList.add('card-body');	
+                cardBody.innerHTML = `<h6>${date}</h6>	
+                                      <img src= "http://openweathermap.org/img/wn/${icon}.png"> </><br>	
+                                       ${temp}°C<br>	
+                                       ${wind} KPH <br>	
+                                       ${humidity}%`	
+                	
+                card.appendChild(cardBody);	
+                fiveDayForecastEl.append(card);	
+            }
 
         })
     return;       
@@ -144,6 +182,11 @@ function clearCurrentCityWeather () {
     var currentConditions = document.getElementById("currentConditions");
     currentConditions.innerHTML = '';
 
+    var fiveDayForecastHeaderEl = document.getElementById("fiveDayForecastHeader");	
+    fiveDayForecastHeaderEl.innerHTML = '';	
+
+    var fiveDayForecastEl = document.getElementById("fiveDayForecast");	
+    fiveDayForecastEl.innerHTML = '';
 
 
     return;
