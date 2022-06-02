@@ -131,7 +131,7 @@ function displaySearchHistory() {
     for (i = 0; i < storedCities.length; i++) {
 
         var pastCityBtn = document.createElement("button");
-        pastCityBtn.classList.add("btn", "btn-primary", "my-2", "past-city");
+        pastCityBtn.classList.add("btn", "btn-dark", "my-2", "past-city");
         pastCityBtn.setAttribute("style", "width: 100%");
         pastCityBtn.textContent = `${storedCities[i].city}`;
         pastSearches.appendChild(pastCityBtn);
